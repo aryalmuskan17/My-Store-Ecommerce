@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add Smartphone</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 
@@ -17,8 +18,8 @@
             <img src="../images/logo.png" alt="Logo" style="height: 40px;">
         </a>
         <nav>
-            <a href="${pageContext.request.contextPath}/" class="me-3 text-dark text-decoration-none">Home</a>
-            <a href="${pageContext.request.contextPath}/pages/products" class="me-3 text-dark text-decoration-none">Product</a>
+            <a href="${pageContext.request.contextPath}/pages/Home.jsp" class="me-3 text-dark text-decoration-none">Home</a>
+            <a href="${pageContext.request.contextPath}/pages/Product.jsp" class="me-3 text-dark text-decoration-none">Product</a>
             <a href="${pageContext.request.contextPath}/pages/Login.jsp" class="me-3 text-dark text-decoration-none">Login</a>
             <a href="${pageContext.request.contextPath}/pages/SignUp.jsp" class="text-dark text-decoration-none">Signup</a>
         </nav>

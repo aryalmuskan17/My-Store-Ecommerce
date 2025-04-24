@@ -9,6 +9,7 @@
     <title>User Dashboard</title>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 
@@ -21,8 +22,8 @@
         </a>
         <!-- Navigation Links -->
         <nav>
-            <a href="${pageContext.request.contextPath}/" class="me-3 text-dark text-decoration-none">Home</a>
-            <a href="${pageContext.request.contextPath}/pages/products" class="me-3 text-dark text-decoration-none">Product</a>
+            <a href="${pageContext.request.contextPath}/pages/Home.jsp" class="me-3 text-dark text-decoration-none">Home</a>
+            <a href="${pageContext.request.contextPath}/pages/Product.jsp" class="me-3 text-dark text-decoration-none">Product</a>
             <a href="${pageContext.request.contextPath}/pages/Login.jsp" class="me-3 text-dark text-decoration-none">Login</a>
             <a href="${pageContext.request.contextPath}/pages/SignUp.jsp" class="text-dark text-decoration-none">Signup</a>
         </nav>
@@ -33,7 +34,14 @@
     <div class="row">
         <div class="col-12 text-center">
             <h1>
-                Welcome, <c:out value="${sessionScope.userWithSession.name}" />!
+                Welcome, 
+                <c:if test="${not empty sessionScope.userWithSession}">
+                    <c:out value="${sessionScope.userWithSession.name}" />
+                </c:if>
+                <c:if test="${empty sessionScope.userWithSession}">
+                    Guest
+                </c:if>
+                !
             </h1>
             <p class="lead">Welcome to My Store. We are glad to have you here. Explore the products and services we offer!</p>
         </div>
@@ -65,9 +73,10 @@
     </div>
 </div>
 
-<!-- Logout -->
+<!-- Profile & Logout Form (Added Profile Link) -->
 <div class="container mt-5 text-center">
-    <form action="LogOutController" method="post">
+    <a href="${pageContext.request.contextPath}/pages/Profile.jsp" class="btn btn-info me-3">Profile</a>
+    <form action="${pageContext.request.contextPath}/LogOutController" method="post" class="d-inline-block">
         <button type="submit" class="btn btn-danger">Log Out</button>
     </form>
 </div>

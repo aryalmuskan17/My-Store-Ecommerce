@@ -32,19 +32,7 @@
     <meta charset="UTF-8">
     <title>Smartphones</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .product-card {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-bottom: 20px;
-            height: 100%;
-        }
-        .product-img {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-        }
-    </style>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 
@@ -55,7 +43,7 @@
             <img src="../images/logo.png" alt="Logo" style="height: 40px;">
         </a>
         <nav>
-            <a href="${pageContext.request.contextPath}/" class="me-3 text-dark text-decoration-none">Home</a>
+            <a href="${pageContext.request.contextPath}/pages/Home.jsp" class="me-3 text-dark text-decoration-none">Home</a>
             <a href="${pageContext.request.contextPath}/pages/Product.jsp" class="me-3 text-dark text-decoration-none">Products</a>
             <a href="${pageContext.request.contextPath}/pages/Login.jsp" class="me-3 text-dark text-decoration-none">Login</a>
             <a href="${pageContext.request.contextPath}/pages/SignUp.jsp" class="text-dark text-decoration-none">Signup</a>

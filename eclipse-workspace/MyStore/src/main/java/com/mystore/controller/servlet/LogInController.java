@@ -33,7 +33,7 @@ public class LogInController extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/pages/Dashboard.jsp");
 		} else {
 			request.setAttribute("errorMessage", "Invalid email or password. Please try again.");
-			request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/pages/Login.jsp").forward(request, response);
 		}
 	}
 }
