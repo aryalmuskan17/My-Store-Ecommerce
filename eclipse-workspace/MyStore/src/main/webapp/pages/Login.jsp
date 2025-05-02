@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ include file="navbar.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,23 +11,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
-
-    <!-- Header -->
-    <header class="bg-light shadow-sm">
-        <div class="container d-flex justify-content-between align-items-center py-3">
-            <!-- Logo -->
-            <a href="${pageContext.request.contextPath}/" class="d-flex align-items-center text-decoration-none">
-                <img src="../images/logo.png" alt="Logo" style="height: 40px;">
-            </a>
-            <!-- Navigation Links -->
-            <nav>
-                <a href="${pageContext.request.contextPath}/pages/Home.jsp" class="me-3 text-dark text-decoration-none">Home</a>
-                <a href="${pageContext.request.contextPath}/pages/Product.jsp" class="me-3 text-dark text-decoration-none">Product</a>
-                <a href="${pageContext.request.contextPath}/pages/Login.jsp" class="me-3 text-dark text-decoration-none">Login</a>
-                <a href="${pageContext.request.contextPath}/pages/SignUp.jsp" class="text-dark text-decoration-none">Signup</a>
-            </nav>
-        </div>
-    </header>
 
     <!-- Login Form -->
     <div class="container d-flex justify-content-center align-items-center vh-100">

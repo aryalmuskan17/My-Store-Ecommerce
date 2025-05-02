@@ -1,10 +1,11 @@
+<%@ include file="navbar.jsp" %>
 <%@ page import="java.sql.*, java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <meta charset="UTF-8">
-    <title>Home - Product Showcase</title>
+    <title>My Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .product-container {
@@ -74,21 +75,6 @@
     </style>
 </head>
 <body>
-
-<!-- Bootstrap Header -->
-<header class="bg-light shadow-sm mb-4">
-    <div class="container d-flex justify-content-between align-items-center py-3">
-        <a href="${pageContext.request.contextPath}/" class="d-flex align-items-center text-decoration-none">
-            <img src="../images/logo.png" alt="Logo" style="height: 40px;">
-        </a>
-        <nav>
-            <a href="${pageContext.request.contextPath}/pages/Home.jsp" class="me-3 text-dark text-decoration-none">Home</a>
-            <a href="${pageContext.request.contextPath}/pages/Product.jsp" class="me-3 text-dark text-decoration-none">Products</a>
-            <a href="${pageContext.request.contextPath}/pages/Login.jsp" class="me-3 text-dark text-decoration-none">Login</a>
-            <a href="${pageContext.request.contextPath}/pages/SignUp.jsp" class="text-dark text-decoration-none">Signup</a>
-        </nav>
-    </div>
-</header>
 
 <!-- Welcome Message -->
 <h1 class="text-center my-4">Welcome to My Store</h1>

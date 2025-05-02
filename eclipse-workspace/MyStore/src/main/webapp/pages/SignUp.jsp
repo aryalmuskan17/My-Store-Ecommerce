@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="navbar.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,33 +10,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
-
-    <!-- ✅ HEADER START -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="${pageContext.request.contextPath}/images/logo.png" alt="Logo" height="40">
-            </a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pages/Home.jsp">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pages/Product.jsp">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pages/Login.jsp">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="${pageContext.request.contextPath}/pages/SignUp.jsp">Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- ✅ HEADER END -->
-
     <!-- SIGNUP FORM -->
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4 shadow" style="width: 28rem;">
@@ -80,13 +53,12 @@
         </div>
     </div>
 
-    <!-- ✅ FOOTER START -->
-    <footer class="bg-light text-center text-muted py-3 mt-5 shadow-sm">
-        <div class="container">
-            &copy; <c:out value="${pageContext.request.contextPath}" /> 2025 | All rights reserved.
-        </div>
-    </footer>
-    <!-- ✅ FOOTER END -->
+   <!-- Footer -->
+<footer class="bg-light text-center text-muted py-3 mt-4">
+    <div class="container">
+        &copy; 2025 My Store. All rights reserved.
+    </div>
+</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     

@@ -26,4 +26,11 @@ public class LogOutController extends HttpServlet {
         // Redirect to the Product page after logout
         response.sendRedirect(request.getContextPath() + "/pages/Product.jsp");
     }
+    // Added method to handle GET requests
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Calls doPost for handling the GET request as well
+        doPost(request, response);
+    }
 }

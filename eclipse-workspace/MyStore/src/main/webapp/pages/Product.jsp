@@ -1,3 +1,4 @@
+<%@ include file="navbar.jsp" %>
 <%@ page import="java.sql.*, java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page session="true" %>
@@ -35,21 +36,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
-
-<!-- Bootstrap Header -->
-<header class="bg-light shadow-sm mb-4">
-    <div class="container d-flex justify-content-between align-items-center py-3">
-        <a href="${pageContext.request.contextPath}/" class="d-flex align-items-center text-decoration-none">
-            <img src="../images/logo.png" alt="Logo" style="height: 40px;">
-        </a>
-        <nav>
-            <a href="${pageContext.request.contextPath}/pages/Home.jsp" class="me-3 text-dark text-decoration-none">Home</a>
-            <a href="${pageContext.request.contextPath}/pages/Product.jsp" class="me-3 text-dark text-decoration-none">Products</a>
-            <a href="${pageContext.request.contextPath}/pages/Login.jsp" class="me-3 text-dark text-decoration-none">Login</a>
-            <a href="${pageContext.request.contextPath}/pages/SignUp.jsp" class="text-dark text-decoration-none">Signup</a>
-        </nav>
-    </div>
-</header>
 
 <div class="container mb-4">
     <!-- Search and Filter Form -->

@@ -66,7 +66,7 @@ public class ProductDAO {
         return isUpdated;
     }
 
-    // Fetch all products (used to display on homepage)
+    // Fetch all products
     public List<Products> getAllProducts() {
         List<Products> products = new ArrayList<>();
         String sql = "SELECT * FROM Product";
@@ -89,5 +89,43 @@ public class ProductDAO {
         }
 
         return products;
+    }
+
+    // Fetch a single product by its ID
+    public Products getProductById(int productId) {
+        Products product = null;
+        String sql = "SELECT * FROM Product WHERE product_id = ?";
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, productId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String name = rs.getString("product_name");
+                    String description = rs.getString("description");
+                    double price = rs.getDouble("price");
+                    int stock = rs.getInt("stock_quantity");
+                    int brandId = rs.getInt("brand_id");
+                    String imageUrl = rs.getString("image_url");
+
+                    product = new Products(productId, name, description, price, stock, brandId, imageUrl, null);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();  // Ideally use logging instead of printStackTrace
+        }
+
+        return product;
+    }
+
+    // Delete a product by ID
+    public boolean deleteProduct(int productId) {
+        String sql = "DELETE FROM Product WHERE product_id = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, productId);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

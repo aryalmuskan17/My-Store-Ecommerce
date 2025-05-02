@@ -4,6 +4,8 @@ import com.mystore.model.User;
 import com.mystore.controller.database.DatabaseConnection;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
 
@@ -74,5 +76,49 @@ public class UserDAO {
             System.out.println("Error in updateUser(): " + e.getMessage());
             return false;
         }
+    }
+
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<>();
+        String query = "SELECT * FROM `USER`";  // Use backticks to escape the keyword
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                User user = new User();
+                user.setUserId(rs.getInt("user_id"));
+                user.setName(rs.getString("name"));
+                user.setEmail(rs.getString("email"));
+                user.setPhone(rs.getString("phone"));
+                user.setAddress(rs.getString("address"));
+                user.setRole(rs.getString("role"));
+                users.add(user);
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Error in getAllUsers(): " + e.getMessage());
+        }
+
+        return users;
+    }
+
+
+    // --- Delete user by ID ---
+    public boolean deleteUser(int userId) {
+        String query = "DELETE FROM USER WHERE user_id = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, userId);
+            return stmt.executeUpdate() > 0;
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Error in deleteUser(): " + e.getMessage());
+        }
+
+        return false;
     }
 }

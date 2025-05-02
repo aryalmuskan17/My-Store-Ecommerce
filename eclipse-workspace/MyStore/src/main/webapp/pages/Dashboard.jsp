@@ -1,34 +1,23 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java"%>
+<%@ include file="navbar.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- Redirect if session is missing or user is not admin -->
+<c:if test="${empty sessionScope.userWithSession}">
+    <c:redirect url="Login.jsp" />
+</c:if>
+<c:if test="${sessionScope.userWithSession.role ne 'admin'}">
+    <c:redirect url="CustomerDashboard.jsp" />
+</c:if>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
-
-<!-- Header -->
-<header class="bg-light shadow-sm">
-    <div class="container d-flex justify-content-between align-items-center py-3">
-        <!-- Logo -->
-        <a href="${pageContext.request.contextPath}/" class="d-flex align-items-center text-decoration-none">
-            <img src="../images/logo.png" alt="Logo" style="height: 40px;">
-        </a>
-        <!-- Navigation Links -->
-        <nav>
-            <a href="${pageContext.request.contextPath}/pages/Home.jsp" class="me-3 text-dark text-decoration-none">Home</a>
-            <a href="${pageContext.request.contextPath}/pages/Product.jsp" class="me-3 text-dark text-decoration-none">Product</a>
-            <a href="${pageContext.request.contextPath}/pages/Login.jsp" class="me-3 text-dark text-decoration-none">Login</a>
-            <a href="${pageContext.request.contextPath}/pages/SignUp.jsp" class="text-dark text-decoration-none">Signup</a>
-        </nav>
-    </div>
-</header>
 
 <div class="container mt-5">
     <div class="row">
@@ -43,7 +32,7 @@
                 </c:if>
                 !
             </h1>
-            <p class="lead">Welcome to My Store. We are glad to have you here. Explore the products and services we offer!</p>
+            <p class="lead">Welcome to My Store. We're glad to see you again. <br>Manage your products, oversee customer orders, and track the latest sales trends—all in one place.</p>
         </div>
     </div>
 
@@ -76,6 +65,8 @@
 <!-- Profile & Logout Form (Added Profile Link) -->
 <div class="container mt-5 text-center">
     <a href="${pageContext.request.contextPath}/pages/Profile.jsp" class="btn btn-info me-3">Profile</a>
+	<a href="${pageContext.request.contextPath}/UserViewController" class="btn btn-info me-3">Manage Users</a>
+	<a href="${pageContext.request.contextPath}/ProductViewController" class="btn btn-info me-3">Manage Products</a>
     <form action="${pageContext.request.contextPath}/LogOutController" method="post" class="d-inline-block">
         <button type="submit" class="btn btn-danger">Log Out</button>
     </form>
