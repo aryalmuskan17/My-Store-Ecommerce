@@ -78,11 +78,13 @@
                 <p><strong>Brand:</strong> <%= rs.getString("brand_name") %></p>
                 <p><strong>Price:</strong> Rs. <%= rs.getInt("price") %></p>
                 <p><%= rs.getString("description") %></p>
-                <form action="AddToCartServlet" method="post" class="d-flex">
-                    <input type="hidden" name="product_id" value="<%= rs.getInt("product_id") %>" />
-                    <input type="number" name="quantity" value="1" min="1" class="form-control me-2" style="width: 80px;" />
-                    <button type="submit" class="btn btn-success">Add to Cart</button>
-                </form>
+                <form action="${pageContext.request.contextPath}/CartServlet" method="post" class="d-flex">
+    			<input type="hidden" name="product_id" value="<%= rs.getInt("product_id") %>" />
+   				 <input type="number" name="quantity" value="1" min="1" class="form-control me-2" style="width: 80px;" />
+    			<input type="hidden" name="action" value="add" />
+    			<button type="submit" class="btn btn-success">Add to Cart</button>
+				</form>
+
             </div>
         </div>
         <%

@@ -37,7 +37,7 @@
             </h1>
             <p class="lead">
                 Welcome to My Store. We're glad to see you again. <br>
-                Browse your favorite products, check your orders, and discover the latest deals—all in one place.
+                Browse your favorite products, check your orders, and discover the latest deals all in one place.
             </p>
         </div>
     </div>
@@ -65,7 +65,7 @@
                 <div class="card-body">
                     <h5 class="card-title">My Orders</h5>
                     <p class="card-text">Track your order history and status.</p>
-                    <a href="${pageContext.request.contextPath}/pages/Orders.jsp" class="btn btn-primary">View Orders</a>
+                    <a href="${pageContext.request.contextPath}/CartServlet" class="btn btn-primary">View Orders</a>
                 </div>
             </div>
         </div>

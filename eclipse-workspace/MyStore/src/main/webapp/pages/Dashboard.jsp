@@ -32,7 +32,7 @@
                 </c:if>
                 !
             </h1>
-            <p class="lead">Welcome to My Store. We're glad to see you again. <br>Manage your products, oversee customer orders, and track the latest sales trends—all in one place.</p>
+            <p class="lead">Welcome to My Store. We're glad to see you again. <br>Manage your products, oversee customer orders, and track the latest sales trends all in one place.</p>
         </div>
     </div>
 
@@ -67,6 +67,7 @@
     <a href="${pageContext.request.contextPath}/pages/Profile.jsp" class="btn btn-info me-3">Profile</a>
 	<a href="${pageContext.request.contextPath}/UserViewController" class="btn btn-info me-3">Manage Users</a>
 	<a href="${pageContext.request.contextPath}/ProductViewController" class="btn btn-info me-3">Manage Products</a>
+	<a href="${pageContext.request.contextPath}/ViewOrdersServlet" class="btn btn-info me-3">Manage Orders</a>
     <form action="${pageContext.request.contextPath}/LogOutController" method="post" class="d-inline-block">
         <button type="submit" class="btn btn-danger">Log Out</button>
     </form>

@@ -28,6 +28,7 @@
                 <a href="${pageContext.request.contextPath}/EditProductController" class="me-3 text-dark text-decoration-none">Products</a>
                 <a href="${pageContext.request.contextPath}/pages/AddProduct.jsp" class="me-3 text-dark text-decoration-none">Add Product</a>
                 <a href="${pageContext.request.contextPath}/UserViewController" class="me-3 text-dark text-decoration-none">Users</a>
+                <a href="${pageContext.request.contextPath}/ViewOrdersServlet" class="me-3 text-dark text-decoration-none">Manage Orders</a>
                 <a href="${pageContext.request.contextPath}/pages/Profile.jsp" class="me-3 text-dark text-decoration-none">Profile</a>
                 <span class="me-3 text-dark">Welcome, <%= username %></span>
                 <a href="${pageContext.request.contextPath}/LogOutController" class="text-dark text-decoration-none">Logout</a>
