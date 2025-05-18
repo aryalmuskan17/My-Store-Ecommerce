@@ -1,8 +1,11 @@
 package com.mystore.controller.servlet;
 
 import com.mystore.controller.dao.CartDAO;
+import com.mystore.controller.dao.OrderDAO;
 import com.mystore.model.CartItem;
-import com.mystore.model.User; // Assuming User model is in the com.mystore.model package
+import com.mystore.model.Order;
+import com.mystore.model.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -15,23 +18,24 @@ public class CartServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private CartDAO cartDAO;
+    private OrderDAO orderDAO;  // Add OrderDAO reference
 
     @Override
     public void init() throws ServletException {
         try {
             cartDAO = new CartDAO();
-        } catch (SQLException e) {
+            orderDAO = new OrderDAO();  // Initialize OrderDAO here
+        } catch (SQLException | ClassNotFoundException e) {
             throw new ServletException("Database connection error.", e);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Step 1: Check if the user is logged in
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("userWithSession");  // Retrieve the user object from the session
+        User user = (User) session.getAttribute("userWithSession");
 
-        if (user == null) {  // If user is not logged in, redirect to login page
+        if (user == null) {
             response.sendRedirect(request.getContextPath() + "/pages/Login.jsp");
             return;
         }
@@ -42,14 +46,17 @@ public class CartServlet extends HttpServlet {
 
             // Fetch all items in the cart
             List<CartItem> cartItems = cartDAO.getCartItems(cartId);
-
-            // Set the cart items as request attribute
             request.setAttribute("cartItems", cartItems);
 
-            // Forward to Cart.jsp (or any page you want to display cart items)
+            // Fetch all orders (order history) for this user
+            List<Order> orders = orderDAO.getOrdersByUserId(user.getUserId());
+            request.setAttribute("orders", orders);
+
+            // Forward to Cart.jsp (or a page where you want to show both cart and order history)
             request.getRequestDispatcher("/pages/Cart.jsp").forward(request, response);
-        } catch (SQLException e) {
-            throw new ServletException("Error fetching cart items.", e);
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new ServletException("Error fetching cart items or orders.", e);
         }
     }
 

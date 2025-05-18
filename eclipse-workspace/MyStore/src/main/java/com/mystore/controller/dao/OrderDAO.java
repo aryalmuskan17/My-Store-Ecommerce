@@ -69,9 +69,8 @@ public class OrderDAO {
         String sql = "SELECT o.order_id, o.user_id, u.name, o.order_date, o.total_amount, o.status " +
                      "FROM `Order` o JOIN `User` u ON o.user_id = u.user_id";
 
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+        try (PreparedStatement ps = connection.prepareStatement(sql);
+        	     ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Order order = new Order();
                 order.setOrderId(rs.getInt("order_id"));
@@ -85,5 +84,28 @@ public class OrderDAO {
         }
         return orders;
     }
-    
+    public List<Order> getOrdersByUserId(int userId) throws SQLException, ClassNotFoundException {
+        List<Order> orders = new ArrayList<>();
+        String sql = "SELECT o.order_id, o.user_id, u.name, o.order_date, o.total_amount, o.status " +
+                     "FROM `Order` o JOIN `User` u ON o.user_id = u.user_id " +
+                     "WHERE o.user_id = ? ORDER BY o.order_date DESC";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Order order = new Order();
+                    order.setOrderId(rs.getInt("order_id"));
+                    order.setUserId(rs.getInt("user_id"));
+                    order.setUserName(rs.getString("name"));
+                    order.setOrderDate(rs.getTimestamp("order_date")); // Use Timestamp for date+time
+                    order.setTotalAmount(rs.getDouble("total_amount"));
+                    order.setStatus(rs.getString("status"));
+                    orders.add(order);
+                }
+            }
+        }
+        return orders;
+    }
+
 }

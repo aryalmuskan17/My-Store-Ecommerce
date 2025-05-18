@@ -53,6 +53,20 @@
                         <p class="mt-3"><strong>Total Amount: Rs. ${total}</strong></p>
                     </div>
                 </div>
+				<!-- Payment Method Card -->
+			<div class="card mb-4">
+   			 <div class="card-header">
+       		 <h5>Payment Method</h5>
+   			 </div>
+   			 <div class="card-body">
+       		 <div class="form-check">
+            <input class="form-check-input" type="radio" name="paymentMethod" id="cod" value="COD" required>
+            <label class="form-check-label" for="cod">
+                Cash on Delivery
+            </label>
+       		 </div>
+   			 </div>
+			</div>
 
                 <!-- Submit Button -->
                 <div class="text-center">
