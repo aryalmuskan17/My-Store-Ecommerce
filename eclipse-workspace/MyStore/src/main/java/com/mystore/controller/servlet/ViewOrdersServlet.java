@@ -1,6 +1,5 @@
 package com.mystore.controller.servlet;
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -20,8 +19,18 @@ public class ViewOrdersServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            String dateParam = request.getParameter("orderDate");
             OrderDAO orderDAO = new OrderDAO();
-            List<Order> orders = orderDAO.getAllOrders();
+            List<Order> orders;
+
+            if (dateParam != null && !dateParam.trim().isEmpty()) {
+                // Fetch orders for a specific date
+                orders = orderDAO.getOrdersByDate(dateParam);
+            } else {
+                // Fetch all orders sorted by date descending
+                orders = orderDAO.getAllOrdersSortedByDateDesc();
+            }
+
             request.setAttribute("orderList", orders);
             request.getRequestDispatcher("/pages/ManageOrders.jsp").forward(request, response);
         } catch (Exception e) {

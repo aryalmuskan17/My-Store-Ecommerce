@@ -85,7 +85,11 @@
                         <tbody>
                             <c:forEach var="order" items="${orders}">
                                 <tr>
-                                    <td>${order.orderId}</td>
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/OrderDetailsServlet?orderId=${order.orderId}">
+                                            ${order.orderId}
+                                        </a>
+                                    </td>
                                     <td><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                                     <td>Rs.${order.totalAmount}</td>
                                     <td>${order.status}</td>
@@ -98,11 +102,16 @@
         </c:choose>
     </div>
 
-    <footer class="bg-light text-center text-muted py-3 mt-5">
-        <div class="container">
-            &copy; 2025 My Store. All rights reserved.
+ <!-- Footer Section -->
+<footer class="bg-light text-center text-muted py-3 mt-4">
+    <div class="container">
+        <div class="mb-2">
+            <a href="${pageContext.request.contextPath}/pages/AboutUs.jsp" class="text-decoration-none text-muted me-3">About Us</a>
+            <a href="${pageContext.request.contextPath}/pages/ContactUs.jsp" class="text-decoration-none text-muted">Contact Us</a>
         </div>
-    </footer>
+        &copy; 2025 My Store. All rights reserved.
+    </div>
+</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

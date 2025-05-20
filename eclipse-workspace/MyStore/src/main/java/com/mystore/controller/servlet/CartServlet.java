@@ -55,7 +55,7 @@ public class CartServlet extends HttpServlet {
             // Forward to Cart.jsp (or a page where you want to show both cart and order history)
             request.getRequestDispatcher("/pages/Cart.jsp").forward(request, response);
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             throw new ServletException("Error fetching cart items or orders.", e);
         }
     }
