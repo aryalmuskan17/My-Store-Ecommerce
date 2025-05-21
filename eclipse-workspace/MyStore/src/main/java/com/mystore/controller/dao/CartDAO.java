@@ -21,7 +21,7 @@ public class CartDAO {
     }
     
 
-    // ✅ Step 2.1: Get or create a cart for a user
+    //  Get or create a cart for a user
     public int getOrCreateCartId(int userId) throws SQLException {
         String select = "SELECT cart_id FROM Cart WHERE user_id = ?";
         PreparedStatement ps = conn.prepareStatement(select);
@@ -41,7 +41,7 @@ public class CartDAO {
 
         return -1; // Failed to create cart
     }
- // ✅ Step 2.2: Add product to cart
+ //  Add product to cart
     public void addToCart(int cartId, int productId, int quantity) throws SQLException {
         // Check if product already in cart
         String check = "SELECT quantity FROM CartItem WHERE cart_id = ? AND product_id = ?";
@@ -97,7 +97,7 @@ public class CartDAO {
 
         return items;
     }
- // ✅ Step 2.4: Remove item from cart
+ //  Remove item from cart
     public void removeCartItem(int cartItemId) throws SQLException {
         String query = "DELETE FROM CartItem WHERE cart_item_id = ?";
         PreparedStatement ps = conn.prepareStatement(query);

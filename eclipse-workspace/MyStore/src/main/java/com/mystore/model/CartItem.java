@@ -22,7 +22,7 @@ public class CartItem {
     public double getTotal() {
         return price * quantity;
     }
-    private int productId; // 👈 Add this
+    private int productId; 
 
     public int getProductId() { return productId; }
     public void setProductId(int productId) { this.productId = productId; }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 24, 2025 at 06:14 AM
+-- Generation Time: May 21, 2025 at 08:06 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -54,6 +54,14 @@ CREATE TABLE `Cart` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `Cart`
+--
+
+INSERT INTO `Cart` (`cart_id`, `user_id`) VALUES
+(11, 1),
+(10, 8);
+
 -- --------------------------------------------------------
 
 --
@@ -66,6 +74,13 @@ CREATE TABLE `CartItem` (
   `product_id` int(11) NOT NULL,
   `quantity` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `CartItem`
+--
+
+INSERT INTO `CartItem` (`cart_item_id`, `cart_id`, `product_id`, `quantity`) VALUES
+(44, 10, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -81,6 +96,25 @@ CREATE TABLE `Order` (
   `status` varchar(50) DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `Order`
+--
+
+INSERT INTO `Order` (`order_id`, `user_id`, `order_date`, `total_amount`, `status`) VALUES
+(11, 8, '2025-05-03', 350000.00, 'Approved'),
+(12, 8, '2025-05-03', 180000.00, 'Pending'),
+(13, 8, '2025-05-03', 165000.00, 'Rejected'),
+(14, 8, '2025-05-04', 330000.00, 'Pending'),
+(15, 8, '2025-05-04', 45000.00, 'Pending'),
+(16, 8, '2025-05-04', 120000.00, 'Pending'),
+(17, 8, '2025-05-05', 350000.00, 'Pending'),
+(18, 8, '2025-05-08', 535000.00, 'Pending'),
+(19, 8, '2025-05-08', 175000.00, 'Pending'),
+(20, 8, '2025-05-08', 990000.00, 'Pending'),
+(21, 8, '2025-05-17', 200000.00, 'Pending'),
+(22, 8, '2025-05-17', 259999.00, 'Pending'),
+(23, 8, '2025-05-17', 495000.00, 'Pending');
+
 -- --------------------------------------------------------
 
 --
@@ -94,6 +128,27 @@ CREATE TABLE `OrderItem` (
   `quantity` int(11) DEFAULT 1,
   `price` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `OrderItem`
+--
+
+INSERT INTO `OrderItem` (`order_item_id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
+(11, 11, 3, 2, 175000.00),
+(12, 12, 8, 1, 180000.00),
+(13, 13, 1, 1, 165000.00),
+(14, 14, 13, 1, 210000.00),
+(15, 14, 4, 1, 120000.00),
+(16, 15, 12, 1, 45000.00),
+(17, 16, 4, 1, 120000.00),
+(18, 17, 3, 2, 175000.00),
+(19, 18, 4, 3, 120000.00),
+(20, 18, 3, 1, 175000.00),
+(21, 19, 3, 1, 175000.00),
+(22, 20, 1, 6, 165000.00),
+(23, 21, 9, 1, 200000.00),
+(24, 22, 11, 1, 259999.00),
+(25, 23, 1, 3, 165000.00);
 
 -- --------------------------------------------------------
 
@@ -117,7 +172,7 @@ CREATE TABLE `Product` (
 
 INSERT INTO `Product` (`product_id`, `product_name`, `price`, `stock_quantity`, `description`, `image_url`, `brand_id`) VALUES
 (1, 'iPhone 15 Pro Max', 165000.00, 5, 'Titanium frame, 6.7\" ProMotion display, A17 Pro chip, 5x telephoto camera', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-max-1.jpg', 1),
-(3, 'iPhone 16 Pro Max', 175000.00, 5, 'Titanium frame, 6.7\" ProMotion display, A18 Pro chip, 5x telephoto camera', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-max-1.jpg', 1),
+(3, 'iPhone 16 Pro Max', 175000.00, 3, 'Titanium frame, 6.7\" ProMotion display, A18 Pro chip, 5x telephoto camera', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-max-1.jpg', 1),
 (4, 'iPhone 15', 120000.00, 8, '6.1\" Super Retina XDR display, A16 Bionic chip, Dynamic Island, USB-C port', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg', 1),
 (7, 'Samsung Galaxy S24 Ultra', 155000.00, 6, '6.8\" QHD+ AMOLED, Snapdragon 8 Gen 3, 200MP camera, S Pen', 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-ultra-5g-sm-s928-0.jpg', 2),
 (8, 'Galaxy S25 Ultra', 180000.00, 5, '6.8\" display, Snapdragon 8 Elite chip, 200MP main camera, AI features', 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s25-ultra-sm-s938-1.jpg', 2),
@@ -152,10 +207,9 @@ CREATE TABLE `USER` (
 INSERT INTO `USER` (`user_id`, `name`, `email`, `phone`, `address`, `password`, `role`) VALUES
 (1, 'Muskan Aryal', 'aryalmuskan17@gmail.com', '9856024240', 'Airport', '1717', 'admin'),
 (2, 'Suyog Subedi', 'suyogsubedi@gmail.com', '9812345678', 'Pokhara', 'Mra17@ecommerce', 'customer'),
-(3, 'Muskan Aryal', 'aryalmuskan@gmail.com', '9856024240', 'Airport', '123', 'customer'),
 (6, 'Muskan Aryal', 'koho@gmail.com', '9856024240', 'Airport', '1717', 'customer'),
 (8, 'User1', 'user1@gmail.com', '9856024240', 'Airport', '123', 'customer'),
-(12, 'Muskan Aryal g', 'aryalmuskan777@gmail.com', '9856024240', 'Airport', '123', 'customer');
+(16, 'Prashant GC', 'gcprashant1@gmail.com', '9807654321', 'Budibazar', '123', 'customer');
 
 --
 -- Indexes for dumped tables
@@ -226,37 +280,37 @@ ALTER TABLE `Brand`
 -- AUTO_INCREMENT for table `Cart`
 --
 ALTER TABLE `Cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `CartItem`
 --
 ALTER TABLE `CartItem`
-  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `Order`
 --
 ALTER TABLE `Order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `OrderItem`
 --
 ALTER TABLE `OrderItem`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `Product`
 --
 ALTER TABLE `Product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `USER`
 --
 ALTER TABLE `USER`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables

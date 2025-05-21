@@ -66,7 +66,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- ✅ Simple JS Validation -->
+    <!-- JS Validation -->
     <script>
         function validatePasswords() {
             var pass1 = document.getElementById("password").value;

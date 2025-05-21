@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserDAO {
 
-    // --- Register user into the "User" table ---
+    // Register user into the "User" table
     public boolean registerUser(User user) {
         String query = "INSERT INTO User (name, email, phone, address, password, role) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -30,7 +30,7 @@ public class UserDAO {
         }
     }
 
-    // --- Log in user using email + password ---
+    // Log in user using email + password
     public User login(String email, String password) {
         String query = "SELECT * FROM User WHERE email = ? AND password = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -58,7 +58,7 @@ public class UserDAO {
         return null;
     }
 
-    // --- Update user details ---
+    // Update user details
     public boolean updateUser(User user) {
         String query = "UPDATE User SET name = ?, email = ?, phone = ?, address = ? WHERE user_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -80,7 +80,7 @@ public class UserDAO {
 
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
-        String query = "SELECT * FROM `USER`";  // Use backticks to escape the keyword
+        String query = "SELECT * FROM `USER`";  // Using backticks to escape the keyword
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -105,7 +105,7 @@ public class UserDAO {
     }
 
 
-    // --- Delete user by ID ---
+    // Delete user by ID
     public boolean deleteUser(int userId) {
         String query = "DELETE FROM USER WHERE user_id = ?";
 

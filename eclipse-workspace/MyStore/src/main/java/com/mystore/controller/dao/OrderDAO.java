@@ -107,7 +107,7 @@ public class OrderDAO {
         return orders;
     }
 
-    // ✅ New Method 1: Get all orders sorted by date (most recent first)
+    // Get all orders sorted by date (most recent first)
     public List<Order> getAllOrdersSortedByDateDesc() throws SQLException {
         List<Order> orders = new ArrayList<>();
         String sql = "SELECT o.order_id, o.user_id, u.name, o.order_date, o.total_amount, o.status " +
@@ -130,7 +130,7 @@ public class OrderDAO {
         return orders;
     }
 
-    // ✅ New Method 2: Get orders by specific date (yyyy-mm-dd format)
+    // Get orders by specific date (yyyy-mm-dd format)
     public List<Order> getOrdersByDate(String date) throws SQLException {
         List<Order> orders = new ArrayList<>();
         String sql = "SELECT o.order_id, o.user_id, u.name, o.order_date, o.total_amount, o.status " +
